@@ -1,0 +1,923 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "AdminApproved",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "AdminRevoked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "creatorContract",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "PointsDistributed",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "creatorContract",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "initializer",
+        "type": "address"
+      }
+    ],
+    "name": "StakingPointsInitialized",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "creatorContract",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "updater",
+        "type": "address"
+      }
+    ],
+    "name": "StakingPointsUpdated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "creatorContract",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "contractAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "stakerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timeStaked",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timeUnstaked",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenIdx",
+            "type": "uint256"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct IStakingPointsCore.StakedToken[]",
+        "name": "stakedTokens",
+        "type": "tuple[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "TokensStaked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "creatorContract",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "contractAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "stakerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timeStaked",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timeUnstaked",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenIdx",
+            "type": "uint256"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct IStakingPointsCore.StakedToken[]",
+        "name": "stakedTokens",
+        "type": "tuple[]"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      }
+    ],
+    "name": "TokensUnstaked",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "admin",
+        "type": "address"
+      }
+    ],
+    "name": "approveAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAdmins",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "admins",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "creatorContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "walletAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getPointsForWallet",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "totalPoints",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "diff",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "creatorContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "stakerAddress",
+        "type": "address"
+      }
+    ],
+    "name": "getStaker",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "pointsRedeemed",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "stakerIdx",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "tokenId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "contractAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "address",
+                "name": "stakerAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timeStaked",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timeUnstaked",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "tokenIdx",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct IStakingPointsCore.StakedToken[]",
+            "name": "stakersTokens",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct IStakingPointsCore.Staker",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "creatorContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      }
+    ],
+    "name": "getStakingPointsInstance",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "address payable",
+            "name": "paymentReceiver",
+            "type": "address"
+          },
+          {
+            "internalType": "uint8",
+            "name": "contractVersion",
+            "type": "uint8"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "tokenAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "pointsRatePerDay",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "startTime",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "endTime",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct IStakingPointsCore.StakingRule[]",
+            "name": "stakingRules",
+            "type": "tuple[]"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "pointsRedeemed",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "stakerIdx",
+                "type": "uint256"
+              },
+              {
+                "components": [
+                  {
+                    "internalType": "uint256",
+                    "name": "tokenId",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "contractAddress",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "stakerAddress",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "timeStaked",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "timeUnstaked",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "tokenIdx",
+                    "type": "uint256"
+                  }
+                ],
+                "internalType": "struct IStakingPointsCore.StakedToken[]",
+                "name": "stakersTokens",
+                "type": "tuple[]"
+              }
+            ],
+            "internalType": "struct IStakingPointsCore.Staker[]",
+            "name": "stakers",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct IStakingPointsCore.StakingPoints",
+        "name": "_stakingPoints",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "admin",
+        "type": "address"
+      }
+    ],
+    "name": "isAdmin",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [],
+    "name": "manifoldMembershipContract",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes",
+        "name": "data",
+        "type": "bytes"
+      }
+    ],
+    "name": "onERC721Received",
+    "outputs": [
+      {
+        "internalType": "bytes4",
+        "name": "",
+        "type": "bytes4"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "tokenAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "destination",
+        "type": "address"
+      }
+    ],
+    "name": "recoverERC721",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "creatorContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      }
+    ],
+    "name": "redeemPoints",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "admin",
+        "type": "address"
+      }
+    ],
+    "name": "revokeAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      }
+    ],
+    "name": "setMembershipAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "creatorContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "tokenAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct IStakingPointsCore.StakedTokenParams[]",
+        "name": "stakingTokens",
+        "type": "tuple[]"
+      }
+    ],
+    "name": "stakeTokens",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "totalPointsClaimed",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "creatorContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "tokenAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct IStakingPointsCore.StakedTokenParams[]",
+        "name": "unstakingTokens",
+        "type": "tuple[]"
+      }
+    ],
+    "name": "unstakeTokens",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes4",
+        "name": "interfaceId",
+        "type": "bytes4"
+      }
+    ],
+    "name": "supportsInterface",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "creatorContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address payable",
+            "name": "paymentReceiver",
+            "type": "address"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "tokenAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "pointsRatePerDay",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "startTime",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "endTime",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct IStakingPointsCore.StakingRule[]",
+            "name": "stakingRules",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct IStakingPointsCore.StakingPointsParams",
+        "name": "stakingPointsParams",
+        "type": "tuple"
+      }
+    ],
+    "name": "initializeStakingPoints",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "creatorContractAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "instanceId",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "address payable",
+            "name": "paymentReceiver",
+            "type": "address"
+          },
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "tokenAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "pointsRatePerDay",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "startTime",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "endTime",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct IStakingPointsCore.StakingRule[]",
+            "name": "stakingRules",
+            "type": "tuple[]"
+          }
+        ],
+        "internalType": "struct IStakingPointsCore.StakingPointsParams",
+        "name": "stakingPointsParams",
+        "type": "tuple"
+      }
+    ],
+    "name": "updateStakingPoints",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
