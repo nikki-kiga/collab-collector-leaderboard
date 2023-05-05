@@ -2,8 +2,9 @@ import React, { ReactNode, Suspense, useEffect, useState } from "react";
 import StakingPointsWalletDetails from "./StakingPointsWalletDetails";
 import { getNetwork } from "@wagmi/core";
 
-import StakingPointsRules from "./StakingPointsRules";
-import StakingPointsLeaderboard from "./StakingPointsLeaderboard";
+
+import StakingPointsLeaderboard from "./leaderboard/StakingPointsLeaderboard";
+import StakingPointsRules from "./leaderboard/StakingPointsRules";
 
 interface StakingPointsProps {
   info?: ReactNode;
@@ -25,7 +26,7 @@ const StakingPoints = ({ info, details }: StakingPointsProps) => {
         <Suspense fallback={<>Loading...</>}>
           <div className="flex flex-col w-full lg:flex-row lg:justify-between grow shrink-0">
             {info}
-            {details}
+            <div className="pt-16 lg:pt-4 lg:pl-16">{details}</div>
           </div>
         </Suspense>
       )}

@@ -1,12 +1,11 @@
 import React from "react";
-import { useStakingPointsContext } from "./StakingPointsContext";
 import { useStakerContext } from "../staker/StakerContext";
 import { StakedToken } from "@/types";
 import { useAccount, useContractRead } from "wagmi";
 import StakingPointsABI from "../../abis/StakingPoints.json";
+import StakingPointsWalletTokenDetails from "./StakingPointsWalletTokenDetails";
 
 const StakingPointsWalletDetails = () => {
-  const { stakingRules } = useStakingPointsContext();
   const { staker } = useStakerContext();
   const { address } = useAccount();
 
@@ -14,27 +13,24 @@ const StakingPointsWalletDetails = () => {
     address: process.env.NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS,
     abi: StakingPointsABI,
     functionName: "getPointsForWallet",
-    args: [process.env.NEXT_PUBLIC_CREATOR_CONTRACT_ADDRESS, 1, address],
+    args: [process.env.NEXT_PUBLIC_CREATOR_CONTRACT_ADDRESS, process.env.NEXT_PUBLIC_INSTANCE_ID, address],
   });
 
   return (
-    <>
-      <h4>Your points</h4>
-      <p>
-        Total available: {data?.toNumber()}, Claimed so far:{staker?.pointsRedeemed?.toNumber()}
+    <div className="bg-gray-700 mt-20 py-4 px-2">
+      <h4 className="text-xl text-black font-extrabold">Your points</h4>
+      <p className="text-black text-lg">
+        Total available: {data?.toNumber()}, Claimed so far:{" "}
+        {staker?.pointsRedeemed?.toNumber()}
       </p>
-      <div>
+      <div className="bg-gray-700 text-gray-400">
         {staker?.stakersTokens?.map((token: StakedToken) => {
           return (
-            <div key={`${token.tokenId}-${token.timeUnstaked}`}>
-              <span>{token.contractAddress} </span>
-              <span>, {token.timeStaked.toNumber()}</span>
-              <span>, {token.timeUnstaked.toNumber()}</span>
-            </div>
+            <StakingPointsWalletTokenDetails token={token} key={token.contractAddress}/>
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

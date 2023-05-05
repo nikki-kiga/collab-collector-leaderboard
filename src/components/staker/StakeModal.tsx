@@ -35,7 +35,7 @@ const StakeModal = () => {
     functionName: "stakeTokens",
     args: [
       process.env.NEXT_PUBLIC_CREATOR_CONTRACT_ADDRESS,
-      1,
+      process.env.NEXT_PUBLIC_INSTANCE_ID,
       selectedValues,
     ],
     enabled: selectedValues.length > 0,

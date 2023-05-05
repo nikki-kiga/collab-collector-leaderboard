@@ -1,3 +1,4 @@
+import { StakedTokenParams } from "@/types";
 import { useState } from "react";
 
 interface StakedTokenFormProps {

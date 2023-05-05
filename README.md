@@ -1,5 +1,54 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Setting up
+add a local.env file with matching contract addresses and instanceId for chain/env
+```
+NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS="[STAKING_POINTS_CONTRACT_ADRESS]"
+NEXT_PUBLIC_CREATOR_CONTRACT_ADDRESS="[CONTRACT_CREATOR_CONTRACT_ADDRESS]"
+NEXT_PUBLIC_INSTANCE_ID="[STAKING_POINTS_INSTANCE]"
+```
+## Helpers for working locally with Ganache
+```
+let creator = await ERC721Creator.deployed()
+let stakingPoints = await ERC721StakingPoints.deployed() let membership = await MockManifoldMembership.deployed()
+let mock721 = await MockERC721.deployed()
+
+
+let accounts = await web3.eth.getAccounts()
+
+await stakingPoints.setMembershipAddress(membership.address)
+
+await creator.registerExtension(stakingPoints.address, {from: accounts[0]})
+
+mock721.mint(accounts[1], 1)
+mock721.mint(accounts[1], 2)
+mock721.mint(accounts[1], 3)
+
+mock721.mint(accounts[2], 4)
+mock721.mint(accounts[2], 5)
+
+mock721.mint(accounts[3], 6)
+
+mock721.mint(accounts[4], 7)
+
+await stakingPoints.initializeStakingPoints(creator.address, 1, {paymentReceiver: accounts[0], stakingRules:[{tokenAddress: mock721.address, pointsRatePerDay: 28800, startTime: 1683146979 , endTime: 1685850440}]}, {from: accounts[0]})
+
+await mock721.setApprovalForAll(stakingPoints.address, true, {from: accounts[1]})
+
+await stakingPoints.stakeTokens(creator.address, 1, [{tokenAddress: mock721.address, tokenId: 1}], {from: accounts[1]})
+
+await stakingPoints.unstakeTokens(creator.address, 1, [{tokenAddress: mock721.address, tokenId: 1}], {from: accounts[1]})
+
+await stakingPoints.getPointsForWallet(creator.address, 1, accounts[1])
+
+await stakingPoints.getStaker(creator.address, 1, accounts[1])
+```
+
+### Potential next steps
+- [] adding approve token transaction on first staking transaction
+- [] adding txn processing to modals for staking and unstaking
+- [] styling more
+- [] alternative provider or fallback in order to render staking points instance details when wallet is not connected
 ## Getting Started
 
 First, run the development server:

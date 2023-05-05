@@ -1,5 +1,5 @@
 import React from "react";
-import { useStakingPointsContext } from "./StakingPointsContext";
+import { useStakingPointsContext } from "../StakingPointsContext";
 
 const StakingPointsRules = () => {
   const { stakingRules } = useStakingPointsContext();
