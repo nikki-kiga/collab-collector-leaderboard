@@ -1,5 +1,13 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Potential next steps
+- [] adding approve token transaction on first staking transaction
+- [] adding txn processing to modals for staking and unstaking
+- [] styling more
+- [] alternative provider or fallback in order to render staking points instance details when wallet is not connected
+- [] add jest tests
+- [] more type safety
+
 ## Setting up
 add a local.env file with matching contract addresses and instanceId for chain/env
 ```
@@ -10,7 +18,8 @@ NEXT_PUBLIC_INSTANCE_ID="[STAKING_POINTS_INSTANCE]"
 ## Helpers for working locally with Ganache
 ```
 let creator = await ERC721Creator.deployed()
-let stakingPoints = await ERC721StakingPoints.deployed() let membership = await MockManifoldMembership.deployed()
+let stakingPoints = await ERC721StakingPoints.deployed()
+let membership = await MockManifoldMembership.deployed()
 let mock721 = await MockERC721.deployed()
 
 
@@ -44,11 +53,6 @@ await stakingPoints.getPointsForWallet(creator.address, 1, accounts[1])
 await stakingPoints.getStaker(creator.address, 1, accounts[1])
 ```
 
-### Potential next steps
-- [] adding approve token transaction on first staking transaction
-- [] adding txn processing to modals for staking and unstaking
-- [] styling more
-- [] alternative provider or fallback in order to render staking points instance details when wallet is not connected
 ## Getting Started
 
 First, run the development server:
