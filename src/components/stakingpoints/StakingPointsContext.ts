@@ -1,3 +1,4 @@
+import { Staker, StakingRule } from "@/types";
 import { createContext, useContext } from "react";
 
 const StakingPointsContext = createContext<{

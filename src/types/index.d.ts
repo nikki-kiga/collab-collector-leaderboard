@@ -13,6 +13,7 @@ interface Staker {
   pointsRedeemed: BigNumber;
   stakerIdx: BigNumber;
   stakersTokens: StakedToken[];
+  stakerAddress: string;
 }
 
 interface StakingRule {

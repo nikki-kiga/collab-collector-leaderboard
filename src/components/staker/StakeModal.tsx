@@ -38,7 +38,10 @@ const StakeModal = () => {
       1,
       selectedValues,
     ],
+    enabled: selectedValues.length > 0,
   });
+
+
 
   // @dev show txn processing, success
   const { data, isLoading, isSuccess, write } = useContractWrite(config);
@@ -68,7 +71,6 @@ const StakeModal = () => {
         (token) =>
           `{tokenAddress: ${token.tokenAddress}, tokenId: ${token.tokenId}}`
       )}`}</p>
-      {/* add tokens here */}
       <StakeTokenForm setSelectedValues={setSelectedValues} />
       <div className="flex justify-end">
         <div className="pr-4">

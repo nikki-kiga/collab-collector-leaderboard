@@ -20,7 +20,8 @@ const UnstakeModal = () => {
     address: process.env.NEXT_PUBLIC_STAKING_CONTRACT_ADDRESS,
     abi: StakingPointsABI,
     functionName: "unstakeTokens",
-    args: [process.env.NEXT_PUBLIC_CREATOR_CONTRACT_ADDRESS, 1, selectedValues]
+    args: [process.env.NEXT_PUBLIC_CREATOR_CONTRACT_ADDRESS, 1, selectedValues],
+    enabled: selectedValues.length > 0
   });
 
   // @dev show txn processing, success

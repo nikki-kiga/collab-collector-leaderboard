@@ -21,8 +21,7 @@ const StakingPointsWalletDetails = () => {
     <>
       <h4>Your points</h4>
       <p>
-        Total available: {data?.totalPoints.toNumber()}, Claimed so far:{" "}
-        {data?.totalPoints.toNumber() - data?.diff.toNumber()}
+        Total available: {data?.toNumber()}, Claimed so far:{staker?.pointsRedeemed?.toNumber()}
       </p>
       <div>
         {staker?.stakersTokens?.map((token: StakedToken) => {
