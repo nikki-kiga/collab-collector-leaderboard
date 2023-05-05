@@ -287,8 +287,7 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -322,8 +321,7 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -393,6 +391,11 @@
             "internalType": "struct IStakingPointsCore.StakedToken[]",
             "name": "stakersTokens",
             "type": "tuple[]"
+          },
+          {
+            "internalType": "address",
+            "name": "stakerAddress",
+            "type": "address"
           }
         ],
         "internalType": "struct IStakingPointsCore.Staker",
@@ -401,8 +404,7 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -440,7 +442,7 @@
               },
               {
                 "internalType": "uint256",
-                "name": "pointsRatePerDay",
+                "name": "pointsRate",
                 "type": "uint256"
               },
               {
@@ -451,6 +453,11 @@
               {
                 "internalType": "uint256",
                 "name": "endTime",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timeUnit",
                 "type": "uint256"
               }
             ],
@@ -506,6 +513,11 @@
                 "internalType": "struct IStakingPointsCore.StakedToken[]",
                 "name": "stakersTokens",
                 "type": "tuple[]"
+              },
+              {
+                "internalType": "address",
+                "name": "stakerAddress",
+                "type": "address"
               }
             ],
             "internalType": "struct IStakingPointsCore.Staker[]",
@@ -519,8 +531,7 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -539,8 +550,7 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [],
@@ -553,8 +563,7 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -601,8 +610,7 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -735,8 +743,7 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -803,8 +810,7 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function",
-    "constant": true
+    "type": "function"
   },
   {
     "inputs": [
@@ -834,7 +840,7 @@
               },
               {
                 "internalType": "uint256",
-                "name": "pointsRatePerDay",
+                "name": "pointsRate",
                 "type": "uint256"
               },
               {
@@ -845,6 +851,11 @@
               {
                 "internalType": "uint256",
                 "name": "endTime",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timeUnit",
                 "type": "uint256"
               }
             ],
@@ -891,7 +902,7 @@
               },
               {
                 "internalType": "uint256",
-                "name": "pointsRatePerDay",
+                "name": "pointsRate",
                 "type": "uint256"
               },
               {
@@ -902,6 +913,11 @@
               {
                 "internalType": "uint256",
                 "name": "endTime",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timeUnit",
                 "type": "uint256"
               }
             ],

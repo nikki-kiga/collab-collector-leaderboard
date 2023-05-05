@@ -1,5 +1,5 @@
 import React, { ReactNode, Suspense, useEffect, useState } from "react";
-import StakingPointsWalletDetails from "../rulesStaker/StakingPointsWalletDetails";
+import StakingPointsWalletDetails from "./StakingPointsWalletDetails";
 import { getNetwork } from "@wagmi/core";
 
 import StakingPointsRules from "./StakingPointsRules";
@@ -23,8 +23,10 @@ const StakingPoints = ({ info, details }: StakingPointsProps) => {
     <>
       {chain?.id && (
         <Suspense fallback={<>Loading...</>}>
-          {info}
-          {details}
+          <div className="flex flex-col w-full lg:flex-row lg:justify-between grow shrink-0">
+            {info}
+            {details}
+          </div>
         </Suspense>
       )}
     </>

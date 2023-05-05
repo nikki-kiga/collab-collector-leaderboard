@@ -10,13 +10,13 @@ export default function Home() {
 
   return (
     <div className="px-4 pt-4 md:px-8 body">
-      <header className="flex justify-between">
+      <header className="flex justify-between relative">
         <Nav />
         <div>
           <ConnectButton />
         </div>
       </header>
-        <main className={`main ${inter.className}`}>
+        <main className={`w-[calc(100vh - 1rem)] ${inter.className}`}>
           <Staking/>
         </main>
     </div>

@@ -8,10 +8,14 @@ import { useStakingPointsContext } from "./StakingPointsContext";
 const StakingPointsLeaderboard = ({}) => {
   const { chain, chains } = getNetwork();
   const { stakers, rules } = useStakingPointsContext();
-  
+
   // calculate the points from the contract
   console.log("leaderboard stakers", stakers);
-  return <div className="title">StakingLeaderboard</div>;
+  return (
+    <div>
+      <h1 className="title text-left">StakingLeaderboard</h1>
+    </div>
+  );
 };
 
 export default StakingPointsLeaderboard;
